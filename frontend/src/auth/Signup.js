@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Input from '../utils/Input';
 import ShowPassword from './ShowPassword';
+import { Link } from 'react-router-dom';
+import useFirebaseAuth from './hooks';
 
 const Signup = () => {
     const [firstName, setFirstName] = useState('');
@@ -10,6 +12,8 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    useFirebaseAuth()
 
     return (
         <div>
@@ -23,7 +27,7 @@ const Signup = () => {
                 value={password}
                 setValue={setPassword}
                 buttons={[
-                    <ShowPassword showPassword={showPassword} setShowPassword={setShowPassword} />
+                    <ShowPassword key={1} showPassword={showPassword} setShowPassword={setShowPassword} />
                 ]}
                 type={showPassword ? "text" : "password"} />
 
@@ -33,10 +37,11 @@ const Signup = () => {
                 value={confirmPassword}
                 setValue={setConfirmPassword}
                 buttons={[
-                    <ShowPassword showPassword={showConfirmPassword} setShowPassword={setShowConfirmPassword} />
+                    <ShowPassword key={1} showPassword={showConfirmPassword} setShowPassword={setShowConfirmPassword} />
                 ]}
                 type={showConfirmPassword ? "text" : "password"} />
             <button className="btn btn-primary">Sign up</button>
+            <p className="pt-3">Already have an account? <Link to="/signup" className="btn btn-link">Log into your account</Link></p>
         </div>);
 }
 
