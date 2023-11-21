@@ -9,7 +9,7 @@ function useFirebaseAuth() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 navigate("/");
-            } else if (navigate.location.pathname !== "/login" && navigate.location.pathname !== "/signup") {
+            } else if (window.location.pathname !== "/login" && window.location.pathname !== "/signup") {
                 navigate("/login");
             }
         });
