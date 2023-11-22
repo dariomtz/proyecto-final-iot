@@ -1,0 +1,15 @@
+[[source]]
+url = "https://artifactory.lyft.net/artifactory/api/pypi/virtual-pypi-lyft/simple/"
+verify_ssl = true
+name = "pip_conf_index_global"
+
+[packages]
+asgiref = "==3.7.2"
+django = "==4.2.7"
+sqlparse = "==0.4.4"
+typing-extensions = "==4.8.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

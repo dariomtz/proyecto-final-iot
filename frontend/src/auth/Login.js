@@ -14,8 +14,8 @@ const Login = () => {
 
     const login = async () => {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password).
-            catch((error) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .catch((error) => {
                 console.log(error);
                 alert(error.message);
             });
