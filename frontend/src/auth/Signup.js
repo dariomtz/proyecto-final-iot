@@ -4,6 +4,7 @@ import ShowPassword from './ShowPassword';
 import { Link } from 'react-router-dom';
 import useFirebaseAuth from './hooks';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const Signup = () => {
     const [firstName, setFirstName] = useState('');
@@ -25,6 +26,18 @@ const Signup = () => {
         createUserWithEmailAndPassword(auth, email, password).then((user) => {
             updateProfile(auth.currentUser, {
                 displayName: firstName + " " + lastName
+            });
+            // Create a document in your users collection and store the user's name
+            // and email address
+            const db = getFirestore();
+            db.collection("users").doc(user.user.uid).set({
+                name: firstName + " " + lastName,
+                email: email
+            }).then(() => {
+                alert("User created successfully");
+            }).catch((error) => {
+                console.log(error);
+                alert(error.message);
             });
         }).catch((error) => {
             console.log(error);

@@ -8,12 +8,9 @@ function Devices() {
     useEffect(() => {
         const getData = async () => {
             const response = await fetch(
-                Constants.UBIDOTS_URL,
+                Constants.UBIDOTS_URL + "devices",
                 {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Auth-Token": Constants.UBIDOTS_TOKEN,
-                    },
+                    headers: Constants.HEADERS,
                 }
 
             );

@@ -7,9 +7,7 @@ function Variable({ variable }) {
     useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(variable.valuesUrl, {
-                headers: {
-                    "X-Auth-Token": Constants.UBIDOTS_TOKEN,
-                },
+                headers: Constants.HEADERS,
             });
             const data = await result.json();
             setValues(data.results);

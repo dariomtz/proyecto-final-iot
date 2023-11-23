@@ -10,10 +10,7 @@ function Device({ device }) {
             const response = await fetch(
                 device.variables,
                 {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Auth-Token": Constants.UBIDOTS_TOKEN,
-                    },
+                    headers: Constants.HEADERS,
                 }
             );
             const data = await response.json();

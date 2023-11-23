@@ -17,10 +17,12 @@ def main():
         response = requests.post(
             url=f"{UBIDOTS_HOST}{UBIDOTS_PATH}simulated_node",
             json={
-                "rfid": 1234567890,
                 "position": {
-                    "lat": lat,
-                    "lng": lng,
+                    "value": 1234567890,
+                    "context": {
+                        "lat": lat,
+                        "lng": lng,
+                    },
                 },
             },
             headers={

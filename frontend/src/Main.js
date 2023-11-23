@@ -1,6 +1,7 @@
 import useFirebaseAuth from "./auth/hooks";
 import { getAuth, signOut } from "firebase/auth";
 import Devices from "./ubidots/Devices";
+import Dashboards from "./dashboards/Dashboards";
 
 const Main = () => {
     useFirebaseAuth();
@@ -19,6 +20,7 @@ const Main = () => {
                 </div>
             </nav>
             <div className="container p-5">
+                <Dashboards />
                 <Devices />
             </div>
         </>
